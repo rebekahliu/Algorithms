@@ -22,18 +22,17 @@ const mergeTime = function(arr) {
       }
     } else {
       if (startIdx < existingData[startIdx][1]) {
-        //
+        // splice in new timeBlock and remove old blocks, including startIdx timeBlock
         existingData.splice(startIdx, endIdx - startIdx + 1, [existingData[startIdx][0], endTime]);
-
       } else {
+        // splice in new timeBlock and remove old blocks, not including startIdx timeBlock
         existingData.splice(startIdx + 1, endIdx - startIdx, [timeBlock[0], endTime]);
       }
     }
   });
 
-  return existingData.reduce( (acc, timeBlock) => {
-    return acc + timeBlock[1] - timeBlock[0];
-  } , 0);
+  
+  return existingData.reduce( (acc, timeBlock) => acc + timeBlock[1] - timeBlock[0] , 0);
 };
 
 // will return index n is contained in or index of previous time block
