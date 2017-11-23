@@ -5,7 +5,6 @@ function longestPalindromicSubstring(s) {
     let oddString = s[i];
     let evenString = "";
     let j = 1;
-
     // even substrings
     if (s[i + j] === s[i]) {
       evenString = s.slice(i, i + j + 1);
@@ -17,13 +16,11 @@ function longestPalindromicSubstring(s) {
 
       j = 1;
     }
-
     // odd substrings
     while (s[i - j] === s[i + j] && (i - j) >= 0) {
       oddString = s.slice(i - j, i + j + 1);
       j++;
     }
-
     // replace longest Length if length at this center is longer
     if (evenString.length > longestSubstring.length) {
       longestSubstring = evenString;
